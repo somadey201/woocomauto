@@ -19,7 +19,9 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String baseUrl = "http://localhost/wordpress/";
+		Dotenv dotenv = Dotenv.load();
+
+		String baseUrl = dotenv.get("MY_BASE_URL");
 
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
@@ -30,8 +32,9 @@ public class Test {
 		WebElement usernameField = driver.findElement(By.id("user_login"));
 		WebElement passwordField = driver.findElement(By.id("user_pass"));
 		WebElement loginButton = driver.findElement(By.id("wp-submit"));
-		usernameField.sendKeys("");//set user name
-		passwordField.sendKeys("");//set password
+		
+		usernameField.sendKeys(dotenv.get("MY_USER_NAME"));
+		passwordField.sendKeys(dotenv.get("MY_PASSWORD"));
 		loginButton.click();
 
 		driver.get(baseUrl + "wp-admin/plugins.php");
