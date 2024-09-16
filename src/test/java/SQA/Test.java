@@ -30,8 +30,8 @@ public class Test {
 		WebElement usernameField = driver.findElement(By.id("user_login"));
 		WebElement passwordField = driver.findElement(By.id("user_pass"));
 		WebElement loginButton = driver.findElement(By.id("wp-submit"));
-		usernameField.sendKeys("Admin");
-		passwordField.sendKeys("Rajesh@20");
+		usernameField.sendKeys("");//set user name
+		passwordField.sendKeys("");//set password
 		loginButton.click();
 
 		driver.get(baseUrl + "wp-admin/plugins.php");
